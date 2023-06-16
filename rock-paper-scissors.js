@@ -1,81 +1,84 @@
+let round = 0;
+let playerLives = 5;
+let computerLives = 5;
+
+const buttons = document.querySelectorAll('button');
+const roundText = document.querySelector('#round-text');
+const playerLivesText = document.querySelector('#player-lives');
+const computerLivesText = document.querySelector('#computer-lives');
+const playerImage = document.querySelector('#player-selection');
+const computerImage = document.querySelector('#computer-selection');
+
+const gameEnded = document.querySelector('.game-ended');
+const winner = document.createElement('div');
+const refresh = document.createElement('button');
+refresh.textContent = ("Try Again");
+
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        playRound(button.id, getComputerChoice());
+    });
+});
+
+function updateDisplay(playerSelection,computerSelection){
+    roundText.textContent = ("Round: " + round);
+    playerLivesText.textContent = ("Man: " + playerLives);
+    computerLivesText.textContent = ("Machine: " + computerLives);
+    //todo: add image changing with classes.
+    //todo: add text saying what happened last round
+}
+
+function checkWin(){
+    if(playerLives == 0 || computerLives == 0){
+        updateDisplay = function(){return};
+        playRound = function(){return};
+    }
+
+    if(playerLives == 0){
+        winner.textContent = ("You have lost, humanity is defeated.")
+        gameEnded.appendChild(winner);
+        gameEnded.appendChild(refresh);
+    }
+    else if(computerLives == 0){
+        winner.textContent = ("You won! You saved the world!")
+        gameEnded.appendChild(winner);
+        gameEnded.appendChild(refresh);
+    }
+}
+
 function getComputerChoice(){
     let temp = Math.floor(Math.random() * 3) + 1;
     if(temp == 1){
-        return "rock";
+        return "R";
     }
     else if(temp == 2){
-        return "paper";
+        return "P";
     }
     else{
-        return "scissors";
+        return "S";
     }
 }
 
 function playRound(playerSelection,computerSelection){
-    playerSelection = playerSelection.toLowerCase();
-    if(playerSelection == "rock" && computerSelection == "scissors"){
-        return "Win";
+    if(playerSelection == "R" && computerSelection == "S"){
+        computerLives--;
+        round++;
     }
-    else if(playerSelection == "paper" && computerSelection == "rock"){
-        return "Win";
+    else if(playerSelection == "P" && computerSelection == "R"){
+        computerLives--;
+        round++;
     }
-    else if(playerSelection == "scissors" && computerSelection == "paper"){
-        return "Win";
+    else if(playerSelection == "S" && computerSelection == "P"){
+        computerLives--;
+        round++;
     }
     else if(playerSelection == computerSelection){
-        return "Tie";
+        round++;
     }
     else{
-        return "Lose";
+        playerLives--;
+        round++;
     }
+    updateDisplay(playerSelection,computerSelection);
+    checkWin();
 }
-
-function game(){
-    let counter = 0;
-    let playerWins = 0
-    let computerWins = 0;
-    let playerSelection = ''
-    let computerSelection = ''
-    let result = '';
-    console.log("This is a game first to three wins!");
-
-    while(true){
-
-        if(playerWins == 3){
-            console.log("\nYou won.")
-            return;
-        }
-        else if(computerWins == 3){
-            console.log("\nYou lost.")
-            return;
-        }
-
-        playerSelection = prompt("Enter Rock, Paper, or Scissors: ");
-        computerSelection = getComputerChoice();
-        result = playRound(playerSelection,computerSelection);
-
-        if(result == "Win"){
-            counter++;
-            playerWins++;
-            console.log("Round",counter,"you won the round.",
-            "You chose:", playerSelection+".", "The computer chose:",computerSelection+".",
-            "Current score: Player:",playerWins,"Computer:",computerWins,);
-        }
-        else if(result == "Lose"){
-            counter++;
-            computerWins++;
-            console.log("Round",counter,"you lost the round.",
-            "You chose:", playerSelection+".", "The computer chose:",computerSelection+".",
-            "Current score: Player: ",playerWins,"Computer: ",computerWins,);
-        }
-        else if(result == "Tie"){
-            counter++;
-            console.log("Round",counter,"this round was a tie.",
-            "You chose:", playerSelection+".", "The computer chose:",computerSelection+".",
-            "Current score: Player:",playerWins,"Computer:",computerWins,);
-        }
-    }
-}
-
-game();
-

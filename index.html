@@ -4,10 +4,43 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Man Vs. Machine</title>
 </head>
-<script src="rock-paper-scissors.js"></script>
+<script src="rock-paper-scissors.js" defer></script>
 <body>
-    
+    <div id = "container">
+        <div class = "header">
+            <h1 class = "header-text base-text">MAN VERSUS MACHINE</h1>
+
+        </div>
+        
+        <div class = "round-container container-base">
+            <div class = "roundDisplay">
+                <img class = "round-img" id = "player-selection" src="images/man.png">
+                <img class = "round-img" id = "computer-selection" src="images/computer.png">
+            </div>
+            <div class = base-text>Choose your weapon...</div>
+        </div>
+
+        <div class = "selection-container container-base"> 
+            <button class = "iconButton" id = "R">Rock</button>
+            <button class = "iconButton" id = "P">Paper</button>
+            <button class = "iconButton" id = "S">Scissors</button>
+        </div>
+
+        <div class = "game-status container-base">
+            <div class = "base-text" id = "round-text">Round: 0</div>
+            <div class = "base-text">Lives Remaining:</div>
+            <div class = "lives">
+                <div class = "base-text" id = "player-lives">Man: 5</div>
+                <div class = "base-text" id = "computer-lives">Machine: 5</div>
+            </div>
+        </div>
+
+        <div class = "game-ended container-base">
+            
+        </div>
+    </div>
 </body>
 </html>
