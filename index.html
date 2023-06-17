@@ -16,30 +16,34 @@
         </div>
         
         <div class = "round-container container-base">
-            <div class = "roundDisplay">
+            <div class = "selection-images">
                 <img class = "round-img" id = "player-selection" src="images/man.png">
+                <img class = "round-img" id = "VS" src="images/VS.png">
                 <img class = "round-img" id = "computer-selection" src="images/computer.png">
             </div>
-            <div class = base-text>Choose your weapon...</div>
+            <div class = "base-text" id = "round-status">The battle between humanity and AI begins now...</div>
         </div>
 
         <div class = "selection-container container-base"> 
-            <button class = "iconButton" id = "R">Rock</button>
-            <button class = "iconButton" id = "P">Paper</button>
-            <button class = "iconButton" id = "S">Scissors</button>
-        </div>
-
-        <div class = "game-status container-base">
-            <div class = "base-text" id = "round-text">Round: 0</div>
-            <div class = "base-text">Lives Remaining:</div>
-            <div class = "lives">
-                <div class = "base-text" id = "player-lives">Man: 5</div>
-                <div class = "base-text" id = "computer-lives">Machine: 5</div>
+            <div class = "base-text">Choose your weapon...</div>
+            <div class = "buttons">
+                <button id = "R"><img class = "iconButton" src="images/rock-player.png"></button>
+                <button id = "P"><img class = "iconButton" src="images/paper-player.png"></button>
+                <button id = "S"><img class = "iconButton" src="images/scissors-player.png"></button>
             </div>
         </div>
 
-        <div class = "game-ended container-base">
-            
+        <div class = "game-status">
+            <div class = "lives">
+                <div class = "base-text">Lives Remaining:</div>
+                <div class = "base-text" id = "player-lives">Man: 5</div>
+                <div class = "base-text" id = "computer-lives">Machine: 5</div>
+            </div>
+            <div class = "base-text" id = "round-text">Round: 0</div>
+        </div>
+
+        <div class = "game-ended">
+
         </div>
     </div>
 </body>
